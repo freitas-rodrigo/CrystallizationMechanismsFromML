@@ -21,7 +21,7 @@ ovitos compute.py
 ```
 This script will load the Molecular Dynamics snapshot in *input_data* and compute the value of the alpha parameter and softness of each atom. See paper for details on the definition of these quantities. Notice that it might take a few minutes to run the script as the simulation snapshot contains 500,000 atoms, it took amost 7min in a i7-7820HQ processor.
 
-After *compute.py* is run it will output a Molecular Dynamics snapshot in *output_data* where each particle will have an alpha and softness property value. In order to visualize the result open the *colored_by_softness.ovito* file using Ovito's GUI "Load Program State". The visualization should be very similar to Fig.3c of the paper, the only difference is that in the paper we used the time averaged alpha in order to identify crystal atoms, while here we use the instantaneous alpha since only one snapshot is available.
+After *compute.py* is run it will output a Molecular Dynamics snapshot in *output_data* where each particle will have an alpha and softness property value. In order to visualize the results open the *colored_by_softness.ovito* file using Ovito's GUI "Load Program State" and update the *Current file* location to open *output_data/coordinates_and_softness.dump*. The visualization should be very similar to Fig.3c of the paper, the only difference is that in the paper we used the time averaged alpha in order to identify crystal atoms, while here we use the instantaneous alpha since only one snapshot is available.
 
 ## Authors & Contact
 
