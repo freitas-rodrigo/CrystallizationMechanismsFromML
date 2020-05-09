@@ -1,3 +1,7 @@
+# Rodrigo Freitas - freitas@stanford.edu
+# "Uncovering the effects of interface-induced ordering of liquid on crystal growth using Machine Learning", Rodrigo Freitas and Evan Reed
+# Nature Communications (arXiv:1909.05915).
+
 from numpy import *
 from ovito.io import import_file, export_file
 from auxiliary_functions import compute_alpha, compute_rsf

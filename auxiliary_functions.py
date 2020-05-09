@@ -1,17 +1,29 @@
+# Rodrigo Freitas - freitas@stanford.edu
+# "Uncovering the effects of interface-induced ordering of liquid on crystal growth using Machine Learning", Rodrigo Freitas and Evan Reed
+# Nature Communications (arXiv:1909.05915).
+
 from numpy import *
 from scipy.special import sph_harm
 from scipy.linalg import norm
 from ovito.data import *
 
 ################################################################################
-# Compute fraction of crystal-like bonds (alpha order parameter).              #
+# Compute fraction of crystal-like bonds (alpha parameter).                    #
 ################################################################################
 
-# l = spherical harmonics order.
-# r_cut = radial cutoff for neighbor finder.
-# qq_cut = cutoff for product of Steinhardt order parameter vectors.
-
 def compute_alpha(data, l, r_cut, qq_cut):
+  """ 
+  Computes alpha for all particles in data.  
+  
+  Parameters: 
+    data (DataCollection): Ovito class with pipeline computation result.
+    l (int): Spherical Harmonics order for Steinhardt parameter.
+    r_cut (float): radial cutoff for neighbor finder.
+    qq_cut (float): cutoff for product of Steinhardt vectors.
+        
+  Returns: 
+    ndarray: value of alpha for each particle.
+  """
   natoms = data.particles.count # Total number of atoms.
 
   # Compute total number of neighbors of each atom.
@@ -69,14 +81,29 @@ def compute_alpha(data, l, r_cut, qq_cut):
 # Compute radial symmetry functions.                                           #
 ################################################################################
 
-# This set of functions computes the radial symmetry functions G as defined in in the Nat. Physics paper by Kaxiras and Liu. The rsf are computed only for atoms with ID in ID_compute. The function computes the rsf of one atom at the time, generating a very small memory footprint.
-
 # Radial symmetry function.
 def G(x, mu, sigma):
+  """ 
+  Evaluates an unormalized Gaussian centered at mu with standard deviation
+  sigma at each element of x.
+  """
   return exp(-(x-mu)**2/(2*sigma**2))
 
 # Compute radial symmetry functions.
 def compute_rsf(data, ID_compute, r_cut, mu, sigma):
+  """ 
+  Compute radial structure functions (rsf) for each particle in data. The rsf are computed only for atoms with ID in ID_compute. The function computes the rsf of one atom at the time in order to have a small memory footprint.
+  
+  Parameters: 
+    data (DataCollection): Ovito class with pipeline computation result.
+    ID_compute (ndarray): ID of particles for which rsf will be computed.
+    r_cut (float): radial cutoff for neighbor finder.
+    mu (ndarray): Gaussian mean for each rsf.
+    sigma (float): Gaussian standard deviation.
+        
+  Returns: 
+    ndarray: array of rsf's for each particle.
+  """
   # Setup useful variables.
   n_compute = len(ID_compute) # Number of atoms to compute rsf.
   N_rsf = len(mu) # Number of rsf parameters.
