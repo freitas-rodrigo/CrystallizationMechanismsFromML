@@ -1,3 +1,2 @@
 __pycache__
-data/*.dat
-data/coordinates_and_softness.dump
+output_data/*

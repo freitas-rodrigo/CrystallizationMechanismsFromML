@@ -2,7 +2,7 @@
 This repository hosts a collection of custom code and scripts accompanying the journal publication:
 
 ["Uncovering the effects of interface-induced ordering of liquid on crystal growth using Machine Learning"  
-Rodrigo Freitas and Evan Reed.  
+Rodrigo Freitas and Evan Reed  
 Nature Communications  
 arXiv:1909.05915](https://arxiv.org/abs/1909.05915).
 
@@ -15,7 +15,13 @@ ovitos -m pip install scipy sklearn
 ```
 
 ## Usage
+Use ovitos (or Python if you only installed the Ovito module) to run the *compute.py* script.
+```
+ovitos compute.py
+```
+This script will load the Molecular Dynamics snapshot in *input_data* and compute the value of the alpha parameter and softness of each atom. See paper for details on the definition of these quantities. Notice that it might take a few minutes to run the script as the simulation snapshot contains 500,000 atoms.
 
+After *compute.py* is run it will output a Molecular Dynamics snapshot in *output_data* where each particle will have an alpha and softness property value. In order to visualize the result open the *colored_by_softness.ovito* file using Ovito's GUI "Load Program State". The visualization should be very similar to Fig.3c of the paper, the only difference is that in the paper we used the time averaged alpha in order to identify crystal atoms, while here we use the instantaneous alpha since only one snapshot is available.
 
 ## Authors & Contact
 

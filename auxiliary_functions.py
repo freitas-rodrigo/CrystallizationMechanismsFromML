@@ -6,6 +6,7 @@ from ovito.data import *
 ################################################################################
 # Compute fraction of crystal-like bonds (alpha order parameter).              #
 ################################################################################
+
 # l = spherical harmonics order.
 # r_cut = radial cutoff for neighbor finder.
 # qq_cut = cutoff for product of Steinhardt order parameter vectors.
