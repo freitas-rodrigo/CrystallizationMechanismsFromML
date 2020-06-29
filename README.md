@@ -3,8 +3,8 @@ This repository hosts a collection of custom code and scripts accompanying the j
 
 ["Uncovering the effects of interface-induced ordering of liquid on crystal growth using Machine Learning"  
 Rodrigo Freitas and Evan Reed  
-Nature Communications  
-arXiv:1909.05915](https://arxiv.org/abs/1909.05915).
+Nature Communications, 2020  
+DOI:10.1038/s41467-020-16892-4](https://doi.org/10.1038/s41467-020-16892-4).
 
 If the script you need is not included here please contact the authors. Any code related to the paper will either be added to this repository (if it is of sufficient general interest) or sent directly to you.
 
